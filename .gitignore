@@ -2,3 +2,8 @@
 _pycache_
 db.sqlite
 
+project/__pycache__/schedule.cpython-39.pyc
+project/__pycache__/auth.cpython-39.pyc
+project/__pycache__/__init__.cpython-39.pyc
+project/__pycache__/models.cpython-39.pyc
+project/__pycache__/settings.cpython-39.pyc
