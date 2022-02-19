@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1000">
+
+    <title>Настройки</title>
+
+    <link rel="icon" href="https://app.pzzby.com/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<body>
+<div class="container">
+	<div>
+        <h1>Авторизационные данные</h1>
+
+        <form action="/signup" class="everydayschedule" method="post">
+            <div class="ips">
+                <tr>
+                    <td class=Item>
+                        <label>Текущий логин:</label>
+                    </td>
+                    <td class=Key>
+                        <input type="text" name="login" class="i-p" value="">
+                    </td>
+                </tr>
+            </div>
+            <div class="ips">
+                <tr>
+                    <td class=Item>
+                        <label>Текущий пароль:</label>
+                    </td>
+                    <td class=Key>
+                        <input type="password" name="password" class="i-p" value="">
+                    </td>
+                </tr>
+            </div>
+            <h3></h3>
+            <div class="ips">
+                <tr>
+                    <td class=Item>
+                        <label>Новый логин:</label>
+                    </td>
+                    <td class=Key>
+                        <input type="text" name="new_login" class="i-p" value="">
+                    </td>
+                </tr>
+            </div>
+            <div class="ips">
+                <tr>
+                    <td class=Item>
+                        <label>Новый пароль:</label>
+                    </td>
+                    <td class=Key>
+                        <input type="password" name="new_password" class="i-p" value="">
+                    </td>
+                </tr>
+            </div>
+            <div class="ips">
+                <tr>
+                    <td class=Item>
+                        <label>Подтвердите пароль:</label>
+                    </td>
+                    <td class=Key>
+                        <input type="password" name="confirm_password" class="i-p" value="">
+                    </td>
+                </tr>
+            </div>
+            <div class="ips">
+                <button type="submit" class="btn">Подвердить</button>
+            </div>
+        </form>
+        <h1>Настройки Wi-Fi</h1>
+
+        <form action="wifi" class="everydayschedule" method="post">
+            <div class="ips">
+                <label>Выберите пункт:</label>
+                <select name=choose_option>
+                      <option value="point">Независимая точка доступа</option>
+                      <option value="connect">Подключиться к существующей сети</option>
+                </select>
+                <div>
+                    <input type="text" name="ssid"  placeholder="Введите SSID"class="i-p" value="">
+                    <input type="text" name="password"  placeholder="Введите пароль" class="i-p" value="">
+                </div>
+            </div>
+             <div class="ips">
+                <button type="submit" class="btn">Подвердить</button>
+            </div>
+        </form>
+        <h1>Настройки контроллера:</h1>
+
+        <form action="reset" class="reset" method="post">
+            <button type="submit" class="btn">Сброс настроек</button>
+        </form>
+        <form action="reboot" class="reboot" method="post">
+            <button type="submit" class="btn">Рестарт микроконтроллера</button>
+        </form>
+    </div>
+</div>
+</body></html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title> Расписание </title>
+		<link rel="icon" type="image/png" href="{{ url_for('static', filename= 'favicon.png') }}">
+		<script src="{{ url_for('static', filename= 'scripts/jquery-3.6.0.min.js') }}"></script>
+		<script src="{{ url_for('static', filename= 'scripts/socket.io.js') }}"></script>
+		<script src="{{ url_for('static', filename= 'scripts/main.js') }}"></script>
+		<link rel="stylesheet" href="{{ url_for('static', filename= 'css/styles.css') }}">
+	</head>
+	<body>
+		<div class="flex-row">
+<!--			<img id="header-logo" src="{{ url_for('static', filename= 'logo.svg') }}"/>-->
+			<div class="telemetry">
+				<div class="item">
+					<img src="icon.svg"/>
+					<div>1347 mPm</div>
+				</div>
+				<div class="item">
+					<img src="icon.svg"/>
+					<div>3400 mPm</div>
+				</div>
+				<div class="item">
+					<img src="icon.svg"/>
+					<div>120 °С</div>
+				</div>
+				<div class="item">
+					<div class="red"></div>
+					<div>Печка греется</div>
+				</div>
+			</div>
+
+<!--			<div class="spacer"></div>-->
+<!--			<h2>Планировщик задач печки</h1>-->
+			<div class="spacer"></div>
+			<a class="button" href="/settings">Настройки</a>
+		</div>
+
+
+		<div class="status">
+			<div class="item">
+				<div class="description">Режим:</div>
+				<div>Очистка от говна</div>
+			</div>
+			<div class="item">
+				<div class="description">Время:</div>
+				<div>17:35</div>
+			</div>
+			<div class="item">
+				<div class="description">Завершение режима:</div>
+				<div>18:00</div>
+			</div>
+			<div class="item">
+				<div class="description">Следующий режим:</div>
+				<div>Готовка пиццы</div>
+			</div>
+		</div>
+
+		<h2>Расписание работы печи</h1>
+			{% for weekday, elems in schedule.items() %}
+				<h3>{{weekday}}</h3>
+				<div class="items-row">
+					{% for i in elems %}
+					<div class="item">
+						<div class="type">{{ i["type"] }}</div>
+						<div class="time">{{ i["time"] }}</div>
+						<div onclick="remove({{ i['id'] }})"  class="remove" title="Удалить режим">+</div>
+					</div>
+					{% endfor %}
+					<div class="item add" title="Добавить режим">+</div>
+				</div>
+			{% endfor %}
+	</body>
+</html>
