@@ -5,13 +5,14 @@ from flask_socketio import SocketIO, emit
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
+socketio = SocketIO()
 
-def create_app():
+def create_app(debug=False):
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = 'secret-key-goes-here'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
-    socketio = SocketIO(app)
+
     
 
     db.init_app(app)
@@ -39,11 +40,7 @@ def create_app():
     from .settings import settings as settings_blueprint
     app.register_blueprint(settings_blueprint)
 
+    socketio.init_app(app)
+
 
     return app
-
-
-# if __name__ == '__main__':
-#     socketio.run(app)
-
-

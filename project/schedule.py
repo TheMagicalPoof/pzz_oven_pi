@@ -1,8 +1,9 @@
 from flask import Blueprint, request, render_template, jsonify
 from .models import Schedule
-from . import db
+from . import db, socketio
 from flask_login import login_required
 from datetime import datetime, time
+from flask_socketio import SocketIO
 
 import sys
 
@@ -57,5 +58,9 @@ def add():
     return jsonify("element created")
 
 
-
+# @socketio.on("web", namespace="/sock")
+@socketio.on("web", namespace="/sock")
+def on_connect(message):
+    print(message, file=sys.stdout)
+    print("o4ko", file=sys.stdout)
 
