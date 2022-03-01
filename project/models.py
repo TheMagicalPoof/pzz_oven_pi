@@ -21,6 +21,6 @@ class Mode(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     red = db.Column(db.Integer)
-    green = db.Column(db.Boolean)
-    blue = db.Column(db.Boolean)
+    green = db.Column(db.Integer)
+    blue = db.Column(db.Integer)
 

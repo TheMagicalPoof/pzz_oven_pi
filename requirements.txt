@@ -1,5 +1,6 @@
 Flask==2.0.2
 Flask_Login==0.5.0
-Flask_SocketIO==4.3.1
+Flask_SocketIO==4.3.2
+Python-SocketIO==3.1.2
 Flask_SQLAlchemy==2.5.1
 Werkzeug==2.0.3

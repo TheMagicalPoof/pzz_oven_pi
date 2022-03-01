@@ -10,7 +10,7 @@ auth = Blueprint('auth', __name__)
 @auth.route('/')
 def index():
     if current_user.is_authenticated:
-        return redirect(url_for("schedule.main"))
+        return redirect(url_for("schedule.schedule_handle"))
     else:
         return signin()
 
@@ -29,7 +29,7 @@ def signup_post():
     new_user = User(login=login, password=generate_password_hash(password, method="sha256"), admin=False)
     db.session.add(new_user)
     db.session.commit()
-    return redirect(url_for("auth.login"))
+    return redirect(url_for("auth.login_post"))
 
 @auth.route("/login", methods=['POST'])
 def login_post():
@@ -42,7 +42,7 @@ def login_post():
         flash('Неверные данные авторизации')
         return signin()
     login_user(user, remember=remember)
-    return redirect(url_for("schedule.main"))
+    return redirect(url_for("schedule.schedule_handle"))
 
 @auth.route('/logout')
 @login_required

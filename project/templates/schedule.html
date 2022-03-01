@@ -11,23 +11,45 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename= 'css/styles.css') }}">
 	</head>
 	<body>
+		<div class="overlay" style="display: none;">
+            <div class="window">
+                <h2>Добавить в расписание</h2>
+                <label>День недели</label>
+                <select class="weekday_choice">
+                    <option value="1">Понедельник</option>
+                    <option value="2">Вторник</option>
+                    <option value="3">Среда</option>
+                    <option value="4">Четверг</option>
+                    <option value="5">Пятница</option>
+                    <option value="6">Суббота</option>
+                    <option value="7">Воскресенье</option>
+                </select>
+                <br/>
+                <label>Время</label>
+                <input class="time" type="time" value="12:00"/>
+                <br/>
+                <label>Режим</label>
+                <select class="choice_mode"></select>
+                <div class="confirm button">Добавить</div>
+            </div>
+        </div>
 		<div class="flex-row">
 <!--			<img id="header-logo" src="{{ url_for('static', filename= 'logo.svg') }}"/>-->
 			<div class="telemetry">
 				<div class="item">
-					<img src="icon.svg"/>
-					<div>1347 mPm</div>
+					<img src="{{ url_for('static', filename= 'conveyor.svg') }}"/>
+					<div class="conv">~ mPm</div>
 				</div>
 				<div class="item">
-					<img src="icon.svg"/>
-					<div>3400 mPm</div>
+					<img src="{{ url_for('static', filename= 'fan.svg') }}"/>
+					<div class="fan">~ rPm</div>
 				</div>
 				<div class="item">
-					<img src="icon.svg"/>
-					<div>120 °С</div>
+					<img src="{{ url_for('static', filename= 'heat.svg') }}"/>
+					<div class="heater">~ °С</div>
 				</div>
 				<div class="item">
-					<div class="red"></div>
+					<div class="light red"></div>
 					<div>Печка греется</div>
 				</div>
 			</div>
@@ -42,35 +64,24 @@
 		<div class="status">
 			<div class="item">
 				<div class="description">Режим:</div>
-				<div>Очистка от говна</div>
+				<div class="current">None</div>
 			</div>
 			<div class="item">
 				<div class="description">Время:</div>
-				<div>17:35</div>
+				<div class="time_now">17:35</div>
 			</div>
 			<div class="item">
 				<div class="description">Завершение режима:</div>
-				<div>18:00</div>
+				<div class="ending">18:00</div>
 			</div>
 			<div class="item">
 				<div class="description">Следующий режим:</div>
-				<div>Готовка пиццы</div>
+				<div class="next">Готовка пиццы</div>
 			</div>
 		</div>
 
-		<h2>Расписание работы печи</h1>
-			{% for weekday, elems in schedule.items() %}
-				<h3>{{weekday}}</h3>
-				<div class="items-row">
-					{% for i in elems %}
-					<div class="item">
-						<div class="type">{{ i["type"] }}</div>
-						<div class="time">{{ i["time"] }}</div>
-						<div onclick="remove({{ i['id'] }})"  class="remove" title="Удалить режим">+</div>
-					</div>
-					{% endfor %}
-					<div class="item add" title="Добавить режим">+</div>
-				</div>
-			{% endfor %}
+		<h1>Расписание работы печи</h1>
+			<div class="wd_container"></div>
+
 	</body>
 </html>
